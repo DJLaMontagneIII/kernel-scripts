@@ -98,6 +98,12 @@ echo "0" > /sys/kernel/power_suspend/power_suspend_mode
 echo "0" > /sys/kernel/power_suspend/power_suspend_state
 
 ############################
+# Backlight Control
+#
+echo "Y" > /sys/module/lm3630/parameters/lm3630_min_backlight_reducer
+echo "60" > /sys/module/lm3630/parameters/lm3630_min_backlight_set
+
+############################
 # Franco SoundControl
 #
 echo "10" > /sys/devices/virtual/misc/soundcontrol/volume_boost
