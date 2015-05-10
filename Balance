@@ -1,0 +1,49 @@
+#!/system/bin/sh
+
+############################
+# Intelli_Plug
+#
+echo "1728000" > /sys/module/intelli_plug/parameters/screen_off_max
+echo "1" > /sys/module/intelli_plug/parameters/touch_boost_active
+# 0:"Balanced (4)", 1:"Performance (4)", 2:"Conservative (4)", 3:"Eco Performance (2)", 4:"Eco Conservative (2)
+echo "0" > /sys/module/intelli_plug/parameters/nr_run_profile_sel
+
+############################
+# MSM Limiter
+#
+echo "1" > /sys/kernel/msm_limiter/limiter_enabled
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_0
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_1
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_2
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_3
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_0
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_1
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_2
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_3
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_0
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_1
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_2
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_3
+echo "1728000" > /sys/kernel/msm_limiter/suspend_max_freq
+
+############################
+# Governor Tunings
+#
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_0
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_1
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_2
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_3
+
+############################
+# Scheduler and Read Ahead
+#
+echo "fiops" > /sys/block/mmcblk0/queue/scheduler
+echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
+
+############################
+# GPU
+#
+echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
+echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
+
+

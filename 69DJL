@@ -1,0 +1,141 @@
+#!/system/bin/sh
+
+############################
+# Intelli_Plug
+#
+echo "1728000" > /sys/module/intelli_plug/parameters/screen_off_max
+echo "1" > /sys/module/intelli_plug/parameters/touch_boost_active
+# 0:"Balanced (4)", 1:"Performance (4)", 2:"Conservative (4)", 3:"Eco Performance (2)", 4:"Eco Conservative (2)
+echo "0" > /sys/module/intelli_plug/parameters/nr_run_profile_sel
+
+############################
+# MSM Limiter
+#
+echo "1" > /sys/kernel/msm_limiter/limiter_enabled
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_0
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_1
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_2
+echo "300000" > /sys/kernel/msm_limiter/suspend_min_freq_3
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_0
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_1
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_2
+echo "2265600" > /sys/kernel/msm_limiter/resume_max_freq_3
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_0
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_1
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_2
+echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_3
+echo "1728000" > /sys/kernel/msm_limiter/suspend_max_freq
+
+############################
+# Governor Tunings
+#
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_0
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_1
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_2
+echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_3
+
+#Ondemand
+echo "95" > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+echo "50000" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+echo "1" > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+echo "4" > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+echo "10" > /sys/devices/system/cpu/cpufreq/ondemand/down_differential
+echo "75" > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core
+echo "3" > /sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core
+echo "960000" > /sys/devices/system/cpu/cpufreq/ondemand/optimal_freq
+echo "960000" > /sys/devices/system/cpu/cpufreq/ondemand/sync_freq
+echo "85" > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load
+
+#Interactive
+echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+echo "90" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+echo "1190400" > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+echo "1" > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+echo "85 1500000:90 1800000:70" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+echo "40000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+echo "30000" > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+echo "30000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack
+
+############################
+# Scheduler and Read Ahead
+#
+echo "fiops" > /sys/block/mmcblk0/queue/scheduler
+echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
+
+############################
+# Bricked Thermal Controls
+#
+
+echo "68" > /sys/kernel/msm_thermal/conf/allowed_low_high
+echo "65" > /sys/kernel/msm_thermal/conf/allowed_low_low
+echo "1497600" > /sys/kernel/msm_thermal/conf/allowed_low_freq 
+echo "75" > /sys/kernel/msm_thermal/conf/allowed_mid_high 
+echo "69" > /sys/kernel/msm_thermal/conf/allowed_mid_low 
+echo "960000" > /sys/kernel/msm_thermal/conf/allowed_mid_freq 
+echo "81" > /sys/kernel/msm_thermal/conf/allowed_max_high 
+echo "76" > /sys/kernel/msm_thermal/conf/allowed_max_low
+echo "300000" > /sys/kernel/msm_thermal/conf/allowed_max_freq 
+echo "400" > /sys/kernel/msm_thermal/conf/poll_ms 
+echo "82" > /sys/kernel/msm_thermal/conf/shutdown_temp 
+
+############################
+# GPU
+#
+echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
+echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
+############################
+# Power Suspend
+#
+# Power Suspend Mode: "0" Kernel Mode, "1" User Mode, "2" LCD Hooks
+# Power Suspend State: Kernel power management driver when screen is off. You can only change this setting if Power Suspend Mode is in User Mode.
+#
+echo "0" > /sys/kernel/power_suspend/power_suspend_mode
+echo "0" > /sys/kernel/power_suspend/power_suspend_state
+
+############################
+# Franco SoundControl
+#
+echo "10" > /sys/devices/virtual/misc/soundcontrol/volume_boost
+echo "2" > /sys/devices/virtual/misc/soundcontrol/speaker_boost
+echo "0" > /sys/devices/virtual/misc/soundcontrol/mic_boost
+echo "0" > /sys/devices/virtual/misc/soundcontrol/camera_mic_boost
+
+############################
+# Fsync control
+#
+echo “N” > /sys/module/sync/parameters/fsync_enabled
+
+############################
+# Logger Mode
+# "0" Enabled, "1" Auto suspend, "2" Disabled
+echo "1" > /sys/module/logger/parameters/log_mode
+
+############################
+# USB Fast charge
+#
+echo "1" > /sys/kernel/fast_charge/force_fast_charge
+echo "1200" > /sys/kernel/fast_charge/fast_charge_level
+
+############################
+# Power Effecient Workqueues (Enable for battery)
+#
+echo "Y" > /sys/module/workqueue/parameters/power_efficient
+
+############################
+# Tweak Background Writeout
+#
+echo "200" > /proc/sys/vm/dirty_expire_centisecs
+echo "40" > /proc/sys/vm/dirty_ratio
+echo "5" > /proc/sys/vm/dirty_background_ratio
+echo "10" > /proc/sys/vm/swappiness
+
+############################
+# LMK Tweaks
+#
+echo "2560,4096,8192,16384,24576,32768" > /sys/module/lowmemorykiller/parameters/minfree
+echo "32" > /sys/module/lowmemorykiller/parameters/cost
+
+#   Set TCP Congestion
+#
+echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
+
