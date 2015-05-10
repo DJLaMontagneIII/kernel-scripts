@@ -135,7 +135,3 @@ echo "10" > /proc/sys/vm/swappiness
 echo "2560,4096,8192,16384,24576,32768" > /sys/module/lowmemorykiller/parameters/minfree
 echo "32" > /sys/module/lowmemorykiller/parameters/cost
 
-#   Set TCP Congestion
-#
-echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
-
