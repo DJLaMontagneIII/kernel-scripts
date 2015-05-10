@@ -44,4 +44,9 @@ echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
 #
 echo "389000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
 echo "389000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
+echo "conservative" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/governor
+echo "0" > /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate
+# Conservative Governor
+echo "20" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/gpufreq/conservative/downthreshold
+echo "50" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/gpufreq/conservative/upthreshold_cons
 

@@ -37,7 +37,7 @@ echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_3
 ############################
 # Scheduler and Read Ahead
 #
-echo "fiops" > /sys/block/mmcblk0/queue/scheduler
+echo "row" > /sys/block/mmcblk0/queue/scheduler
 echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
 
 ############################
@@ -45,5 +45,9 @@ echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
 #
 echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
 echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
-
+echo "msm-adreno-tz" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/governor
+# Simple gpu algorithm
+echo "1" > /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate
+echo "4" > /sys/module/simple_gpu_algorithm/parameters/simple_laziness
+echo "5000" > /sys/module/simple_gpu_algorithm/parameters/simple_ramp_threshold
 
