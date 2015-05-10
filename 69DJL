@@ -81,7 +81,6 @@ echo "82" > /sys/kernel/msm_thermal/conf/shutdown_temp
 ############################
 # GPU
 #
-echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/devfreq/fdb00000.qcom,kgsl-3d0/max_freq
 echo "450000000" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
 echo "msm-adreno-tz" > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq/governor
 # Simple gpu algorithm
