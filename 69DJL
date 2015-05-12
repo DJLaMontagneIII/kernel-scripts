@@ -65,7 +65,6 @@ echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
 ############################
 # Bricked Thermal Controls
 #
-
 echo "68" > /sys/kernel/msm_thermal/conf/allowed_low_high
 echo "65" > /sys/kernel/msm_thermal/conf/allowed_low_low
 echo "1497600" > /sys/kernel/msm_thermal/conf/allowed_low_freq 
@@ -104,7 +103,26 @@ echo "Y" > /sys/module/lm3630/parameters/lm3630_min_backlight_reducer
 echo "60" > /sys/module/lm3630/parameters/lm3630_min_backlight_set
 
 ############################
-# Franco SoundControl
+# KCAL color control
+#
+echo "1" > /sys/devices/platform/kcal_ctrl.0/kcal_enable
+#(0-256) - Controls minimum RGB Multiplier value
+echo "1" > /sys/devices/platform/kcal_ctrl.0/kcal_min
+#(0-256 0-256 0-256) - Controls R/G/B Multipliers
+echo "256 256 256" > /sys/devices/platform/kcal_ctrl.0/kcal
+#(0-1) - Enables/Disables Display Inversion Mode
+echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_invert
+#(224-383 or 128) - Controls saturation intensity - use 128 for grayscale mode
+echo "268" > /sys/devices/platform/kcal_ctrl.0/kcal_sat
+#(0-1536) - Controls display hue
+echo "0" > /sys/devices/platform/kcal_ctrl.0/kcal_hue
+#(128-383) - Controls display value
+echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_val
+#(128-383) - Controls display contrast
+echo "255" > /sys/devices/platform/kcal_ctrl.0/kcal_cont
+
+############################
+# SoundControl
 #
 echo "10" > /sys/devices/virtual/misc/soundcontrol/volume_boost
 echo "2" > /sys/devices/virtual/misc/soundcontrol/speaker_boost
@@ -128,7 +146,7 @@ echo "1" > /sys/kernel/fast_charge/force_fast_charge
 echo "1200" > /sys/kernel/fast_charge/fast_charge_level
 
 ############################
-# Power Effecient Workqueues (Enable for battery)
+# Power Effecient Workqueues
 #
 echo "Y" > /sys/module/workqueue/parameters/power_efficient
 
