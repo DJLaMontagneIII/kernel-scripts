@@ -3,10 +3,21 @@
 ############################
 # Intelli_Plug
 #
-echo "1574400" > /sys/module/intelli_plug/parameters/screen_off_max
-echo "0" > /sys/module/intelli_plug/parameters/touch_boost_active
-# 0:"Balanced (4)", 1:"Performance (4)", 2:"Conservative (4)", 3:"Eco Performance (2)", 4:"Eco Conservative (2)
-echo "3" > /sys/module/intelli_plug/parameters/nr_run_profile_sel
+echo "1" > /sys/kernel/intelli_plug/intelli_plug_active
+# 0:"Balanced", 1:"Performance", 2:"Conservative", 3:"Disabled", 4:"Tri", 5:"Eco", 6:"Strict"
+echo "2" > /sys/kernel/intelli_plug/full_mode_profile
+echo "8" > /sys/kernel/intelli_plug/nr_run_hysteresis
+echo "722" > /sys/kernel/intelli_plug/cpu_nr_run_threshold
+echo "1" > /sys/kernel/intelli_plug/debug_intelli_plug
+echo "0" > /sys/kernel/intelli_plug/hotplug_suspend
+echo "2" > /sys/kernel/intelli_plug/cpus_boosted
+echo "1" > /sys/kernel/intelli_plug/min_cpus_online
+echo "2" > /sys/kernel/intelli_plug/max_cpus_online
+echo "10" > /sys/kernel/intelli_plug/suspend_defer_time
+echo "30" > /sys/kernel/intelli_plug/def_sampling_ms
+echo "500" > /sys/kernel/intelli_plug/boost_lock_duration
+echo "2000" > /sys/kernel/intelli_plug/down_lock_duration
+echo "3" > /sys/kernel/intelli_plug/nr_fshift
 
 ############################
 # MSM Limiter
