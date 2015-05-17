@@ -141,11 +141,6 @@ echo "0" > /sys/devices/virtual/misc/soundcontrol/mic_boost
 echo "0" > /sys/devices/virtual/misc/soundcontrol/camera_mic_boost
 
 ############################
-# Fsync control
-#
-echo “N” > /sys/module/sync/parameters/fsync_enabled
-
-############################
 # Logger Mode
 # "0" Enabled, "1" Auto suspend, "2" Disabled
 echo "1" > /sys/module/logger/parameters/log_mode
