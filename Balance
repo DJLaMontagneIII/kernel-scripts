@@ -27,10 +27,6 @@ echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_1
 echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_2
 echo "2265600" > /sys/kernel/msm_limiter/live_max_freq_3
 echo "1728000" > /sys/kernel/msm_limiter/suspend_max_freq
-
-############################
-# Governor Tunings
-#
 echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_0
 echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_1
 echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_2

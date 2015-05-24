@@ -26,14 +26,10 @@ echo "1958400" > /sys/kernel/msm_limiter/live_max_freq_1
 echo "1958400" > /sys/kernel/msm_limiter/live_max_freq_2
 echo "1958400" > /sys/kernel/msm_limiter/live_max_freq_3
 echo "1574400" > /sys/kernel/msm_limiter/suspend_max_freq
-
-############################
-# Governor Tunings
-#
 echo "conservative" > /sys/kernel/msm_limiter/scaling_governor_0
 echo "conservative" > /sys/kernel/msm_limiter/scaling_governor_1
 echo "conservative" > /sys/kernel/msm_limiter/scaling_governor_2
-echo "conservative" > /sys/kernel/msm_limiter/scaling_governor_3 
+echo "conservative" > /sys/kernel/msm_limiter/scaling_governor_3
 
 ############################
 # Scheduler and Read Ahead
