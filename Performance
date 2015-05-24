@@ -30,10 +30,10 @@ echo "1728000" > /sys/kernel/msm_limiter/suspend_max_freq
 ############################
 # Governor Tunings
 #
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_0
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_1
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_2
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_3 
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_0
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_1
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_2
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_3 
 
 ############################
 # Scheduler and Read Ahead

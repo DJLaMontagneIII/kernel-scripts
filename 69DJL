@@ -40,10 +40,10 @@ echo "1728000" > /sys/kernel/msm_limiter/suspend_max_freq
 ############################
 # Governor Tunings
 #
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_0
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_1
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_2
-echo "interactive" > /sys/kernel/msm_limiter/scaling_governor_3
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_0
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_1
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_2
+echo "bacon" > /sys/kernel/msm_limiter/scaling_governor_3
 
 #Ondemand
 echo "95" > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
@@ -67,11 +67,16 @@ echo "40000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
 echo "30000" > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
 echo "30000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack
 
-############################
-# Scheduler and Read Ahead
-#
-echo "row" > /sys/block/mmcblk0/queue/scheduler
-echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
+#Bacon
+echo "20000 1400000:40000 1700000:20000" > /sys/devices/system/cpu/cpufreq/bacon/above_hispeed_delay
+echo "90" > /sys/devices/system/cpu/cpufreq/bacon/go_hispeed_load
+echo "1497600" > /sys/devices/system/cpu/cpufreq/bacon/hispeed_freq
+echo "1" > /sys/devices/system/cpu/cpufreq/bacon/io_is_busy
+echo "85 1500000:90 1800000:70" > /sys/devices/system/cpu/cpufreq/bacon/target_loads
+echo "40000" > /sys/devices/system/cpu/cpufreq/bacon/min_sample_time
+echo "30000" > /sys/devices/system/cpu/cpufreq/bacon/timer_rate
+echo "100000" > /sys/devices/system/cpu/cpufreq/bacon/max_freq_hysteresis
+echo "30000" > /sys/devices/system/cpu/cpufreq/bacon/timer_slack
 
 ############################
 # Bricked Thermal Controls
@@ -108,10 +113,15 @@ echo "0" > /sys/kernel/power_suspend/power_suspend_mode
 echo "0" > /sys/kernel/power_suspend/power_suspend_state
 
 ############################
-# Backlight Control
+# Scheduler and Read Ahead
 #
-echo "Y" > /sys/module/lm3630/parameters/lm3630_min_backlight_reducer
-echo "60" > /sys/module/lm3630/parameters/lm3630_min_backlight_set
+echo "row" > /sys/block/mmcblk0/queue/scheduler
+echo "512" > /sys/block/mmcblk0/bdi/read_ahead_kb
+
+############################
+# Dynamic FSync
+#
+echo "1" > /sys/kernel/dyn_fsync/Dyn_fsync_active
 
 ############################
 # KCAL color control
@@ -139,6 +149,12 @@ echo "10" > /sys/devices/virtual/misc/soundcontrol/volume_boost
 echo "2" > /sys/devices/virtual/misc/soundcontrol/speaker_boost
 echo "0" > /sys/devices/virtual/misc/soundcontrol/mic_boost
 echo "0" > /sys/devices/virtual/misc/soundcontrol/camera_mic_boost
+
+############################
+# Backlight Control
+#
+echo "Y" > /sys/module/lm3630/parameters/lm3630_min_backlight_reducer
+echo "60" > /sys/module/lm3630/parameters/lm3630_min_backlight_set
 
 ############################
 # Logger Mode
